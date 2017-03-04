@@ -64,6 +64,38 @@ class UtilityHelper {
         return $dist;
     }
 
+    public function getStates() {
+        return array(
+            "AC" => "Acre",
+            "AL" => "Alagoas",
+            "AM" => "Amazonas",
+            "AP" => "Amapá",
+            "BA" => "Bahia",
+            "CE" => "Ceará",
+            "DF" => "Distrito Federal",
+            "ES" => "Espírito Santo",
+            "GO" => "Goiás",
+            "MA" => "Maranhão",
+            "MT" => "Mato Grosso",
+            "MS" => "Mato Grosso do Sul",
+            "MG" => "Minas Gerais",
+            "PA" => "Pará",
+            "PB" => "Paraíba",
+            "PR" => "Paraná",
+            "PE" => "Pernambuco",
+            "PI" => "Piauí",
+            "RJ" => "Rio de Janeiro",
+            "RN" => "Rio Grande do Norte",
+            "RO" => "Rondônia",
+            "RS" => "Rio Grande do Sul",
+            "RR" => "Roraima",
+            "SC" => "Santa Catarina",
+            "SE" => "Sergipe",
+            "SP" => "São Paulo",
+            "TO" => "Tocantins"             
+        );
+    }
+
     /**
      * Get all states by name
      *
@@ -168,4 +200,37 @@ class UtilityHelper {
         }
     }
     
+    /**
+     * Get all dates between two dates
+     *
+     * @param string $startDate
+     * @param string $endDate
+     */
+    public function dateRange($strDateFrom,$strDateTo) {
+        $aryRange=array();
+        $iDateFrom=mktime(1,0,0,substr($strDateFrom,5,2),     substr($strDateFrom,8,2),substr($strDateFrom,0,4));
+        $iDateTo=mktime(1,0,0,substr($strDateTo,5,2),     substr($strDateTo,8,2),substr($strDateTo,0,4));
+        if ($iDateTo>=$iDateFrom)
+        {
+            array_push($aryRange,date('Y-m-d',$iDateFrom)); // first entry
+            while ($iDateFrom<$iDateTo)
+            {
+                $iDateFrom+=86400; // add 24 hours
+                array_push($aryRange,date('Y-m-d',$iDateFrom));
+            }
+        }
+        return $aryRange;
+    }
+
+    /**
+     * Get difference of hours between hours
+     *
+     * @param string $startHour
+     * @param string $endHour
+     */
+    public function hourRange($openingTime, $closingTime){
+        $time1 = strtotime($openingTime);
+        $time2 = strtotime($closingTime);
+        return round(abs($time2 - $time1) / 3600,2);
+    }
 }
