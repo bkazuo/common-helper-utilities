@@ -1,0 +1,16 @@
+{
+    "name": "bkazuo/common-helper-utilities",
+    "type": "project",
+    "description": "Classe de métodos auxiliares para formatar números (CPF, CNPJ, telefone, CEP), datas, geolocalização (latitude, longitude), etc. Inteiramente construido em PHP para rodar sob qualquer sistema operacional",
+    "keywords": ["utils","helpers","checkers"],
+    "license": "MIT",
+    "homepage": "https://github.com/bkazuo/common-helper-utilities/",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "src/"
+        }
+    }
+}
