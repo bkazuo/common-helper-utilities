@@ -88,6 +88,22 @@ $distance = $util->getDistance(-8.852507, -53.085938, 40.905210, -110.039063);
 
 ```
 
+#### Datas e Horas
+
+```php
+require __DIR__.'/vendor/autoload.php';
+
+// Instancia o objeto da classe
+$util = new Helper\UtilityHelper();
+
+// Array com todas datas entre duas datas
+$distance = $util->dateRange('2017-03-03', '2017-03-15');
+
+// Total de horas entre duas horas
+$distance = $util->hourRange('5:00', '9:00');
+
+```
+
 ## Contribuindo
 Por favor, caso tenha alguma sugestão, bug para reportar, ou alguma melhoria, por favor nos comunique através das issues.
 
