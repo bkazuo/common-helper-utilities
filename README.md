@@ -104,6 +104,18 @@ $distance = $util->hourRange('5:00', '9:00');
 
 ```
 
+#### Caracteres especiais
+
+```php
+require __DIR__.'/vendor/autoload.php';
+
+// Instancia o objeto da classe
+$util = new Helper\UtilityHelper();
+
+// Remove string com caracteres especiais e substitui por caracteres simples
+$distance = $util->removeSpecialCharacter('Banana Maçã Pera');    // Retorna "banana-maca-pera"
+```
+
 ## Contribuindo
 Por favor, caso tenha alguma sugestão, bug para reportar, ou alguma melhoria, por favor nos comunique através das issues.
 
