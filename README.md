@@ -1,123 +1,106 @@
-# Classe UtilityHelper
-## Descrição
-Classe de métodos auxiliares para formatar números (CPF, CNPJ, telefone, CEP), datas, geolocalização (latitude, longitude), etc.
+# UtilityHelper Class
+## Description
+Helper class to format brazilian common values (CPF, CNPJ, phone, CEP - zip code), dates, geolocations (lat and lng), etc
 
-[![Latest Stable Version](https://poser.pugx.org/bkazuo/common-helper-utilities/v/stable)](https://packagist.org/packages/bkazuo/common-helper-utilities)
-[![Total Downloads](https://poser.pugx.org/bkazuo/common-helper-utilities/downloads)](https://packagist.org/packages/bkazuo/common-helper-utilities)
-[![License](https://poser.pugx.org/bkazuo/common-helper-utilities/license)](https://packagist.org/packages/bkazuo/common-helper-utilities)
-[![Latest Unstable Version](https://poser.pugx.org/bkazuo/common-helper-utilities/v/unstable)](https://packagist.org/packages/bkazuo/common-helper-utilities)
-
-## Instalação via Composer
-
-Pelo terminal vá até a raiz de seu projeto e lá execute :
-
+## Install via Composer
 ```bash
 composer require bkazuo/common-helper-utilities
 ``` 
-Isso fará com que o SEU arquivo composer.json seja acrescido da dependência de seu projeto.
-Esta classe será baixada e colocada na pasta "vendor" e o arquivo autoload.php sejá atualizado.
 
-### Exemplo
+### Example
 ```php
 require __DIR__.'/vendor/autoload.php';
 
-// Instancia o objeto da classe
+// New helper object created
 $util = new Helper\UtilityHelper();
 
-// Formata o número do CPF 12345678909 para 123.456.789-09
+// CPF 12345678909 to 123.456.789-09
 $formatedCpf = $util->mask('12345678909', '###.###.###-##');
 echo($formatedCpf);
 ```
 
-### Lista de métodos disponíveis
+### Available methods
 
-#### Máscara
+#### mask
 
 ```php
 require __DIR__.'/vendor/autoload.php';
 
-// Instancia o objeto da classe
+// New helper object created
 $util = new Helper\UtilityHelper();
 
-// Formata o número do CPF 12345678909 para 123.456.789-09
+// CPF 12345678909 to 123.456.789-09
 $formatedCpf = $util->mask('12345678909', '###.###.###-##');
 
-// Formata CNPJ de 12123123000199 para 12.123.123/0001-99
+// CNPJ from 12123123000199 to 12.123.123/0001-99
 $formatedCnpj = $util->mask('12123123000199', '##.###.###/####-##');
 
-// Formata CEP de 01122999 para 01122-999
+// CEP from 01122999 to 01122-999
 $formatedCep = $util->mask('01122999', '#####-###');
 ```
 
-#### Estados
+#### States
 
 ```php
 require __DIR__.'/vendor/autoload.php';
 
-// Instancia o objeto da classe
+// New helper object created
 $util = new Helper\UtilityHelper();
 
-// Lista associativa de estados onde a chave
-// é a sigla e o valor é o nome do estado
+// List of all states initials
 $states = $util->getStates();
 
-// Lista de nome de todos os estados
+// List of all states names
 $allStatesName = $util->getAllStatesByName();
 
-// Lista de codigo de todos os estados
+// Array with key as the initial and value as the state name
 $allStatesCode = $util->getAllStatesByCode();
 
-// Código do estado
+// State code
 $stateCode = $util->getStateCodeByName('São Paulo');
 
-// Nome do estado
+// State name
 $stateName = $util->getStateNameByCode('SP');
 
 ```
 
-#### Latitude e Longitude
+#### Latitude and Longitude
 
 ```php
 require __DIR__.'/vendor/autoload.php';
 
-// Instancia o objeto da classe
+// New helper object created
 $util = new Helper\UtilityHelper();
 
-// Distancia em METROS entre as coordenadas de latitude e longitude
+// Distance in meters between the coordinates of lat and lng
 $distance = $util->getDistance(-8.852507, -53.085938, 40.905210, -110.039063);
 
 ```
 
-#### Datas e Horas
+#### Date and time
 
 ```php
 require __DIR__.'/vendor/autoload.php';
 
-// Instancia o objeto da classe
+// New helper object created
 $util = new Helper\UtilityHelper();
 
-// Array com todas datas entre duas datas
+// Array all dates between initial and final date
 $distance = $util->dateRange('2017-03-03', '2017-03-15');
 
-// Total de horas entre duas horas
+// Total hours between initial and final hour
 $distance = $util->hourRange('5:00', '9:00');
 
 ```
 
-#### Caracteres especiais
+#### Special characters
 
 ```php
 require __DIR__.'/vendor/autoload.php';
 
-// Instancia o objeto da classe
+// New helper object created
 $util = new Helper\UtilityHelper();
 
-// Remove string com caracteres especiais e substitui por caracteres simples
+// Remove string with special characters and replace them by simple characters
 $distance = $util->removeSpecialCharacter('Banana Maçã Pera');    // Retorna "banana-maca-pera"
 ```
-
-## Contribuindo
-Por favor, caso tenha alguma sugestão, bug para reportar, ou alguma melhoria, por favor nos comunique através das issues.
-
-## Licença
-MIT. Por favor, veja o [Arquivo de Licença](license.txt) para mais informações.
